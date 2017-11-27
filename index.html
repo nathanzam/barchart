@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="barchartApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Barchart API Table</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+</head>
+
+<body>
+  <br>
+  <fieldset>
+    <input id="stockSearch" class="searchBar" type="text" placeholder="search company symbol"></input>
+    <button ng-click="getStock()" type="submit">Submit</button>
+  </fieldset>
+  <div class="row">
+    <div class="container">
+      <div class="col-md-12">
+        <h2>Barchart API</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Exchange</th>
+              <th>Name</th>
+              <th>Current Price</th>
+              <th>Net Chage</th>
+              <th>Percent Change</th>
+              <th>Open Price</th>
+              <th>High Price</th>
+              <th>Low Price</th>
+              <th>Closing Price</th>
+              <th>Volume</th>
+            </tr>
+          </thead>
+          <tbody ng-controller="chartCtrl">
+            <tr ng-repeat="stock in stocks.results">
+              <td>{{stock.symbol}}</td>
+              <td>{{stock.exchange}}</td>
+              <td>{{stock.name}}</td>
+              <td>{{stock.lastPrice | currency}}</td>
+              <td>{{stock.netChange}}</td>
+              <td>{{stock.percentChange}}</td>
+              <td>{{stock.open | currency}}</td>
+              <td>{{stock.high | currency}}</td>
+              <td>{{stock.low | currency}}</td>
+              <td>{{stock.close | currency}}</td>
+              <td>{{stock.volume}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="./app.js" type="text/javascript">
+  </script>
+</body>
+
+</html>
